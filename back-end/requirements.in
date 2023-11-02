@@ -1,0 +1,10 @@
+# Database
+psycopg2-binary
+
+# Django
+django
+djangorestframework
+
+# Gunicorn
+gunicorn
+gevent

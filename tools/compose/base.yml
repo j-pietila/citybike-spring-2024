@@ -1,0 +1,33 @@
+version: "3.1"
+services:
+  app:
+    build:
+      context: ../../back-end
+      dockerfile: ./Dockerfile
+    image: citybike-backend
+    depends_on:
+      - db
+    ports:
+      - 3000:3000
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_APP_DB
+      - POSTGRES_APP_DB_USER
+      - POSTGRES_APP_DB_PASSWORD
+    restart: unless-stopped
+
+  db:
+    build: ./postgresql
+    image: citybike-db
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  db-data:
