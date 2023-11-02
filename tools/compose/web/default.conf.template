@@ -1,0 +1,50 @@
+# Template to support using project variables
+
+upstream gunicorn {
+    server app:3000;
+}
+
+# HTTP traffic
+
+server {
+    listen 80 default_server;
+    server_name ${SERVER_NAME};
+
+    # Rate limit for file download / connection
+    limit_rate 2048k;
+
+    access_log /var/log/nginx/access.log custom_access_log_format;
+
+    root /run/web;
+
+    location / {
+        limit_req zone=perip burst=20 nodelay;
+        include proxy.conf;
+
+        try_files $uri /index.html =404;
+    }
+
+    location /api/ {
+        limit_req zone=perip burst=20 nodelay;
+        proxy_pass http://gunicorn;
+    }
+}
+
+# Django admin
+
+server {
+    server_name ${ADMIN_SERVER_NAME};
+
+    include proxy.conf;
+
+    access_log /var/log/nginx/access.log custom_access_log_format;
+
+    location / {
+        # Redirect to Django admin
+        rewrite ^/$ /admin;
+    }
+
+    location /admin {
+        proxy_pass http://gunicorn;
+    }
+}

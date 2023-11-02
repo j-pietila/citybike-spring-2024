@@ -22,6 +22,12 @@ update-requirements:
 dev: venv db
 	$(venv) $(admin) runserver
 
+shell: venv
+	$(venv) $(admin) shell
+
+createsuperuser: venv
+	$(venv) $(admin) createsuperuser
+
 # Docker
 build:
 	$(compose) build --pull

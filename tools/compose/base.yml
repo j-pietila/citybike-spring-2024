@@ -10,10 +10,13 @@ services:
     ports:
       - 3000:3000
     environment:
+      - DJANGO_SETTINGS_MODULE
       - POSTGRES_HOST=db
       - POSTGRES_APP_DB
       - POSTGRES_APP_DB_USER
       - POSTGRES_APP_DB_PASSWORD
+    volumes:
+      - web-root:/run/web
     restart: unless-stopped
 
   db:
@@ -25,9 +28,29 @@ services:
       - POSTGRES_DB
       - POSTGRES_USER
       - POSTGRES_PASSWORD
+      - POSTGRES_APP_DB
+      - POSTGRES_APP_DB_USER
+      - POSTGRES_APP_DB_PASSWORD
     volumes:
       - db-data:/var/lib/postgresql/data
     restart: unless-stopped
 
+  web:
+    build: ./web
+    image: citybike-web
+    ports:
+      - 80:80
+      - 443:443
+      - 8001:8001
+    depends_on:
+      - app
+    environment:
+      - UPSTREAM
+      - SERVER_NAME
+      - ADMIN_SERVER_NAME
+    volumes:
+      - web-root:/run/web
+
 volumes:
   db-data:
+  web-root:

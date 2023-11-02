@@ -22,3 +22,9 @@ To create local development environment, run the following make commands:
 - make build db
 - make venv
 - make dev
+
+## Django Admin on localhost
+You can create a superuser for yourself by running the following make command:
+- make createsuperuser
+
+After that you can log-in to Django Admin by going to http://citybikeadmin.localhost/
