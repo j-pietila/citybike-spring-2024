@@ -1,3 +1,4 @@
+# Builder image
 FROM python:3.11-slim-bullseye as builder-django
 
 WORKDIR /app
@@ -11,6 +12,7 @@ ENV PATH="/venv/bin:$PATH"
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
+# Final image
 FROM python:3.11-slim-bullseye
 
 WORKDIR /run/src/app

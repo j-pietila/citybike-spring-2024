@@ -2,7 +2,7 @@ include tools/Makefile.vars
 
 venv := $(VIRTUAL_ENV)/bin/python
 admin := back-end/manage.py
-compose := COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f tools/compose/base.yml
+compose := COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f tools/compose/base.yml -f tools/compose/$(ENV).yml
 
 # Dev tools
 venv: $(VIRTUAL_ENV)/bin/activate

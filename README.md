@@ -6,25 +6,38 @@
 - Django REST framework - Django toolkit for building REST APIs
 - PostgreSQL - Relational SQL database
 
-## Back-end dependencies
+## Front-end stack
+- React - Front-end library
+- Vite - Front-end tooling
+- Yarn - Package manager
+
+# Building the project
 In order to build the project you will need:
-- Python (>= 3.11)
 - GNU Make
 - Docker
 - Docker Compose
 
-# Building the project
 To build the project on localhost, run the following make command:
 - make build up
 
+To access the web app on localhost after running up the containers:
+- go to http://citybike.localhost
+
+To access Django Admin on localhost after running up the containers:
+- create a superuser for yourself by running the following make command:
+    - make createsuperuser
+- go to http://citybikeadmin.localhost and log-in with your created superuser
+
 ## Development on localhost
-To create local development environment, run the following make commands:
+To run local back-end development environment, run the following make commands:
 - make build db
-- make venv
 - make dev
 
-## Django Admin on localhost
-You can create a superuser for yourself by running the following make command:
-- make createsuperuser
+Front-end can be developed by utilizing the frontend container run in dev environment.
 
-After that you can log-in to Django Admin by going to http://citybikeadmin.localhost/
+Back-end development requirements:
+- Python >= 3.11
+
+Front-end development requirements:
+- Node.js >= 20.9.0 LTS
+- Yarn >= 4.0.1

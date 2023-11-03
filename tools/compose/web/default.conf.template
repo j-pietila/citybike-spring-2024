@@ -1,5 +1,9 @@
 # Template to support using project variables
 
+upstream frontend {
+    server frontend:5173;
+}
+
 upstream gunicorn {
     server app:3000;
 }
@@ -17,11 +21,11 @@ server {
 
     root /run/web;
 
+    include proxy.conf;
+
     location / {
         limit_req zone=perip burst=20 nodelay;
-        include proxy.conf;
-
-        try_files $uri /index.html =404;
+        proxy_pass http://frontend;
     }
 
     location /api/ {
