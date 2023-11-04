@@ -26,7 +26,6 @@ class Journey(models.Model):
 
 
 class Station(models.Model):
-    id = models.IntegerField(primary_key=True)
     station_name = models.CharField(max_length=100)
     station_address = models.CharField(max_length=100)
     coordinate_x = models.CharField(max_length=100)
