@@ -33,3 +33,37 @@ class Station(models.Model):
 
     class Meta:
         db_table = "station"
+
+    @property
+    def journeys_started(self) -> int:
+        """
+        Return count of journeys started from station.
+        """
+        return self.journey_departure_station_set.all().count()
+
+    @property
+    def journeys_ended(self) -> int:
+        """
+        Return count of journeys ended to station.
+        """
+        return self.journey_return_station_set.all().count()
+
+    @property
+    def journeys_started_avg_distance(self) -> int:
+        """
+        Return average distance of journeys started from the station.
+        """
+        avg_distance = self.journey_departure_station_set.all().aggregate(
+            models.Avg("distance", default=0)
+        )
+        return int(avg_distance["distance__avg"])
+
+    @property
+    def journeys_started_avg_duration(self) -> int:
+        """
+        Return average duration of journeys started from the station.
+        """
+        avg_duration = self.journey_departure_station_set.all().aggregate(
+            models.Avg("duration", default=0)
+        )
+        return int(avg_duration["duration__avg"])

@@ -37,6 +37,7 @@ Front-end can be developed by utilizing the frontend container run in dev enviro
 
 Back-end development requirements:
 - Python >= 3.11
+- Black formatter through the development virtuel env
 
 Front-end development requirements:
 - Node.js >= 20.9.0 LTS
@@ -48,7 +49,7 @@ Back-end tests can be run in container, or on localhost dev environment.
 To run tests on localhost with localhost dev environment, run the following make command:
 - make test-local
 
-To run specific tests on localhost with localhost dev environment, give TEST parameter:
+To run specific tests on localhost with localhost dev environment, add TEST parameter:
 - make test-local TEST=bikes.testing.<test_file>.<test_class>.<test_name>
 
 To run all tests in containers, run the following make command:
