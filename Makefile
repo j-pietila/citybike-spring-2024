@@ -6,7 +6,7 @@ compose := COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f tools/
 
 # Dev tools
 venv: $(VIRTUAL_ENV)/bin/activate
-$(VIRTUAL_ENV)/bin/activate: back-end/requirements.in
+$(VIRTUAL_ENV)/bin/activate: back-end/requirements.txt
 	test -d $(VIRTUAL_ENV) || python3.11 -m venv $(VIRTUAL_ENV)
 		$(venv) -m ensurepip --upgrade; \
 		$(venv) -m pip install -r back-end/dev-requirements.txt
@@ -28,7 +28,7 @@ shell: venv
 createsuperuser: venv
 	$(venv) $(admin) createsuperuser
 
-# Docker
+# Project building
 build:
 	$(compose) build --pull
 
@@ -40,6 +40,23 @@ down:
 
 db:
 	$(compose) up -d db
+
+# Backend testing
+test:
+	$(compose) exec -T app bash -c 'DJANGO_SETTINGS_MODULE=citybike.settings \
+	&& DJANGO_DEBUG=false \
+	&& pip install coverage \
+	&& coverage erase \
+	&& coverage run manage.py test --keepdb \
+	&& coverage report'
+
+test-local: venv db
+	source $(VIRTUAL_ENV)/bin/activate \
+		&& cd back-end \
+		&& coverage erase \
+		&& coverage run --source=$(TEST) manage.py test $(TEST) \
+		--settings=citybike.settings --keepdb \
+		&& coverage report
 
 # Database
 psql:

@@ -1,3 +1,4 @@
 black
+coverage
 pip-tools
 pylint-django
