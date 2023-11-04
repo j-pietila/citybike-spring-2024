@@ -1,0 +1,19 @@
+# Configuration for back-end testing coverage tool
+
+[run]
+branch = True
+
+source =
+    bikes,
+
+omit =
+    */migrations/*
+    */testing/*
+
+[report]
+show_missing = True
+skip_empty = True
+skip_covered = False
+
+[xml]
+output = coverage.xml
