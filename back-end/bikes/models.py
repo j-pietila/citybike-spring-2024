@@ -2,8 +2,8 @@ from django.db import models
 
 
 class Journey(models.Model):
-    departure_date_time = models.DateTimeField()
-    return_date_time = models.DateTimeField()
+    departure_date_time = models.DateTimeField(blank=True, null=True)
+    return_date_time = models.DateTimeField(blank=True, null=True)
     departure_station = models.ForeignKey(
         to="Station",
         on_delete=models.SET_NULL,
@@ -18,8 +18,8 @@ class Journey(models.Model):
         blank=True,
         null=True,
     )
-    distance = models.IntegerField()
-    duration = models.IntegerField()
+    distance = models.IntegerField(blank=True, null=True)
+    duration = models.IntegerField(blank=True, null=True)
 
     class Meta:
         db_table = "journey"
