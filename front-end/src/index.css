@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .station-list {
+        @apply mx-12 my-8 grid grid-cols-1 space-y-1
+    }
+
+    .station-list-row {
+        @apply grid grid-rows-1 grid-cols-4
+    }
+
+    .station-list-row-item {
+        @apply font-inter
+    }
+}
