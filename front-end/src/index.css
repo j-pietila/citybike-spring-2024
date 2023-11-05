@@ -3,12 +3,15 @@
 @tailwind utilities;
 
 @layer components {
+    .station-detail {
+        @apply mx-12 my-8 font-inter
+    }
     .station-list {
-        @apply mx-12 my-8 grid grid-cols-1 space-y-1
+        @apply mx-12 my-8 grid grid-cols-1 space-y-1.5
     }
 
     .station-list-row {
-        @apply grid grid-rows-1 grid-cols-4
+        @apply grid grid-rows-1 grid-cols-4 hover:bg-slate-200 hover:cursor-pointer
     }
 
     .station-list-row-item {
