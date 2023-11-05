@@ -1,6 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import { NavigationOutlet } from "./components/navigation-outlet.tsx";
-import { ErrorPage, StationsListPage, StationsMapPage } from "./pages";
+import {
+  ErrorPage,
+  StationDetailsPage,
+  StationsListPage,
+  StationsMapPage,
+} from "./pages";
 
 export const router = createBrowserRouter([
   {
@@ -11,6 +16,10 @@ export const router = createBrowserRouter([
       {
         element: <StationsListPage />,
         index: true,
+      },
+      {
+        path: "stations/:id",
+        element: <StationDetailsPage />,
       },
       {
         path: "map",
