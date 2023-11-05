@@ -50,6 +50,7 @@ services:
       - ADMIN_SERVER_NAME
     volumes:
       - web-root:/run/web
+    restart: unless-stopped
 
 volumes:
   db-data:
