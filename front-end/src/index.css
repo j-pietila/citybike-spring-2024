@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 @layer components {
+    .navigation-bar {
+        @apply flex justify-start items-center gap-x-16 pl-16 py-4 font-inter font-semibold text-xl tracking-wide border-b border-slate-950
+    }
+
+    .navigation-bar-dropdown-content {
+        @apply grid grid-flow-col auto-cols-auto gap-x-4 text-base border-t-2 border-slate-600 border-spacing-2
+      }
     .station-detail {
         @apply mx-12 my-8 font-inter
     }
