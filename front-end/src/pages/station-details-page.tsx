@@ -18,7 +18,7 @@ const StationDetailsPage = () => {
   }, [id, location]);
 
   if (!station) {
-    return null;
+    return false;
   }
 
   return (
