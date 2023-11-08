@@ -22,25 +22,25 @@ const StationDetailsPage = () => {
   }
 
   return (
-    <div className="station-detail">
-      <div className="font-bold text-4xl mb-4">
-        {station.station_name} - {station.station_address}
-      </div>
-      <div className="font-semibold text-2xl">
-        Journeys started: {station.journeys_started}
-      </div>
-      <div className="font-semibold text-2xl">
-        Journeys ended: {station.journeys_ended}
-      </div>
-      <div className="font-semibold text-2xl">
-        Average distance of started journeys:{" "}
-        {station.journeys_started_avg_distance} meters
-      </div>
-      <div className="font-semibold text-2xl">
-        Average duration of started journeys:{" "}
+    <div className="station-details">
+      <p className="mb-1 font-semibold text-4xl">{station.station_name}</p>
+      <p className="mb-8 text-3xl">{station.station_address}</p>
+      <p className="mb-1 text-2xl font-semibold decoration-slate-600">
+        Journeys
+      </p>
+      <p className="text-xl">Started from station {station.journeys_started}</p>
+      <p className="mb-4 text-xl">Ended to station {station.journeys_ended}</p>
+      <p className="mb-1 text-2xl font-semibold decoration-slate-600">
+        Started journeys
+      </p>
+      <p className="text-xl">
+        Average distance {station.journeys_started_avg_distance} meters
+      </p>
+      <p className="text-xl">
+        Average duration{" "}
         {Math.floor(station.journeys_started_avg_duration / 60)} minutes{" "}
         {station.journeys_started_avg_duration % 60} seconds
-      </div>
+      </p>
     </div>
   );
 };
