@@ -3,20 +3,22 @@
 @tailwind utilities;
 
 @layer components {
+    .app-root {
+        @apply min-h-screen font-inter bg-slate-50
+    }
+
     .navigation-bar {
-        @apply flex justify-start items-center gap-x-16 pl-16 py-4 font-inter font-semibold text-xl tracking-wide bg-slate-50 border-b border-slate-950
+        @apply flex justify-start items-center gap-x-16 pl-16 py-4 font-semibold text-xl tracking-wide border-b border-slate-950
     }
 
     .navigation-bar-dropdown-content {
         @apply grid grid-flow-col auto-cols-auto gap-x-4 text-base border-t-2 border-slate-600 border-spacing-2
       }
-    .station-detail {
-        @apply mx-12 my-12 font-inter
+
+    .station-details {
+        @apply px-16 py-10
     }
 
-    .station-list-page {
-        @apply bg-slate-50
-    }
     .station-list {
         @apply py-12 mx-auto max-w-[85%] grid grid-cols-1 space-y-1.5
     }
@@ -26,6 +28,6 @@
     }
 
     .station-list-row-item {
-        @apply font-inter text-center
+        @apply  text-center
     }
 }

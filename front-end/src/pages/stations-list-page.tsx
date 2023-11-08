@@ -27,26 +27,24 @@ const StationsListPage = () => {
   }
 
   return (
-    <div className="station-list-page">
-      <div className="station-list">
-        <div className="station-list-row text-center font-inter font-semibold tracking-wide bg-slate-400 hover:bg-slate-400 hover:cursor-auto">
-          <div>Station name</div>
-          <div>Station address</div>
-          <div>Latitude</div>
-          <div>Longitude</div>
-        </div>
-        {stations.map((station, index) => (
-          <div
-            key={station.id}
-            className={`station-list-row ${
-              index % 2 === 0 ? "bg-slate-100" : "bg-white"
-            }`}
-            onClick={() => handleClick(station.id)}
-          >
-            <StationListRow station={station} />
-          </div>
-        ))}
+    <div className="station-list">
+      <div className="station-list-row text-center font-inter font-semibold tracking-wide bg-slate-400 hover:bg-slate-400 hover:cursor-auto">
+        <div>Station name</div>
+        <div>Station address</div>
+        <div>Latitude</div>
+        <div>Longitude</div>
       </div>
+      {stations.map((station, index) => (
+        <div
+          key={station.id}
+          className={`station-list-row ${
+            index % 2 === 0 ? "bg-slate-100" : "bg-white"
+          }`}
+          onClick={() => handleClick(station.id)}
+        >
+          <StationListRow station={station} />
+        </div>
+      ))}
     </div>
   );
 };

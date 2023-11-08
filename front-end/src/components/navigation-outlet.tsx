@@ -3,10 +3,10 @@ import { NavigationBar } from "./navigation-bar";
 
 export const NavigationOutlet = () => {
   return (
-    <>
+    <div className="app-root">
       <NavigationBar />
       <Outlet />
-    </>
+    </div>
   );
 };
 
