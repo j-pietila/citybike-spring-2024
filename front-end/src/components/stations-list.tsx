@@ -1,7 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import { SortButton } from "./stations-list-sort-button.tsx";
 import { getStationDetails } from "../services/station-service.tsx";
 
-export const StationsList = ({ stations }) => {
+export const StationsList = ({
+  orgStations,
+  setOrgStations,
+  stations,
+  setStations,
+}) => {
   const navigate = useNavigate();
 
   const handleRowClick = (id) => {
@@ -12,9 +18,19 @@ export const StationsList = ({ stations }) => {
 
   return (
     <div className="station-list">
-      <div className="station-list-row text-center font-semibold tracking-wide bg-slate-400 hover:bg-slate-400 hover:cursor-auto">
-        <div>Station name</div>
-        <div>Station address</div>
+      <div className="station-list-row items-center text-center font-semibold tracking-wide bg-slate-400 hover:bg-slate-400 hover:cursor-auto">
+        <SortButton
+          buttonText="Station name"
+          sortField="station_name"
+          stations={orgStations}
+          setStations={setOrgStations}
+        />
+        <SortButton
+          buttonText="Station address"
+          sortField="station_address"
+          stations={orgStations}
+          setStations={setOrgStations}
+        />
         <div>Latitude</div>
         <div>Longitude</div>
       </div>

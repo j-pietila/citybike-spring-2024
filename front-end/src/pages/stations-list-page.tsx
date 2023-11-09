@@ -28,7 +28,7 @@ const StationsListPage = () => {
       );
       setFilteredStations(filteredStations);
     }
-  }, [searchFilter]);
+  }, [stations, searchFilter]);
 
   if (!filteredStations) {
     return false;
@@ -40,7 +40,12 @@ const StationsListPage = () => {
         searchFilter={searchFilter}
         setSearchFilter={setSearchFilter}
       />
-      <StationsList stations={filteredStations} />
+      <StationsList
+        orgStations={stations}
+        setOrgStations={setStations}
+        stations={filteredStations}
+        setStations={setFilteredStations}
+      />
     </>
   );
 };
