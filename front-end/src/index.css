@@ -15,12 +15,16 @@
         @apply grid grid-flow-col auto-cols-auto gap-x-4 text-base border-t-2 border-slate-600 border-spacing-2
       }
 
+    .search-bar {
+        @apply flex flex-col items-center my-8
+    }
+
     .station-details {
         @apply px-16 py-10
     }
 
     .station-list {
-        @apply py-12 mx-auto max-w-[85%] grid grid-cols-1 space-y-1.5
+        @apply mx-auto max-w-[85%] pb-10 grid grid-cols-1 space-y-1.5
     }
 
     .station-list-row {
