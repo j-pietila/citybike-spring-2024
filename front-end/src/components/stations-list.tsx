@@ -15,34 +15,41 @@ export const StationsList = () => {
   };
 
   return (
-    <div className="station-list">
-      <div className="station-list-row items-center text-center font-semibold tracking-wide bg-slate-400 hover:bg-slate-400 hover:cursor-auto">
-        <StationsListSortButton
-          buttonText="Station name"
-          sortField="station_name"
-        />
-        <StationsListSortButton
-          buttonText="Station address"
-          sortField="station_address"
-        />
-        <div>Latitude</div>
-        <div>Longitude</div>
-      </div>
-      {filteredStations.map((station, index) => (
-        <div
-          key={station.id}
-          className={`station-list-row ${
-            index % 2 === 0 ? "bg-slate-100" : "bg-white"
-          }`}
-          onClick={() => handleRowClick(station.id)}
-        >
-          <div className="station-list-row-item">{station.station_name}</div>
-          <div className="station-list-row-item">{station.station_address}</div>
-          <div className="station-list-row-item">{station.latitude}</div>
-          <div className="station-list-row-item">{station.longitude}</div>
+    <>
+      <div className="station-list-grid">
+        <div className="station-list-subgrid station-list-subgrid-tw font-semibold tracking-wide bg-slate-400">
+          <StationsListSortButton
+            buttonText="Station name"
+            sortField="station_name"
+          />
+          <StationsListSortButton
+            buttonText="Station address"
+            sortField="station_address"
+          />
+          <div className="flex justify-center items-center hover:cursor-auto hover:bg-slate-400">
+            Latitude
+          </div>
+          <div className="flex justify-center items-center hover:cursor-auto hover:bg-slate-400">
+            Longitude
+          </div>
         </div>
-      ))}
-    </div>
+        <>
+          {filteredStations.map((station, index) => (
+            <div
+              className={`station-list-subgrid station-list-subgrid-tw hover:bg-gray-400 hover:cursor-pointer ${
+                index % 2 === 0 ? "bg-slate-200" : "bg-slate-100"
+              }`}
+              onClick={() => handleRowClick(station.id)}
+            >
+              <div>{station.station_name}</div>
+              <div>{station.station_address}</div>
+              <div>{station.latitude}</div>
+              <div>{station.longitude}</div>
+            </div>
+          ))}
+        </>
+      </div>
+    </>
   );
 };
 

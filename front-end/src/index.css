@@ -23,15 +23,17 @@
         @apply px-16 py-10
     }
 
-    .station-list {
-        @apply mx-auto max-w-[85%] pb-10 grid grid-cols-1 space-y-1.5
+    .station-list-grid {
+        @apply mx-auto max-w-[85%] pb-10 grid grid-cols-4 gap-y-1.5
     }
 
-    .station-list-row {
-        @apply grid grid-rows-1 grid-cols-4 divide-x divide-slate-600 hover:bg-slate-200 hover:cursor-pointer
+    .station-list-subgrid {
+        grid-column: 1 / 5;
+        display: grid;
+        grid-template-columns: subgrid;
     }
 
-    .station-list-row-item {
-        @apply  text-center
+    .station-list-subgrid-tw {
+        @apply divide-x divide-slate-600 text-center
     }
 }

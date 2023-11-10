@@ -32,7 +32,7 @@ export const StationsListSortButton = ({ buttonText, sortField }) => {
       {buttonText}
       <svg
         id={caretId}
-        className="h-8 w-8 transition duration-200 group-hover:fill-sky-700"
+        className="h-8 w-8 transition duration-200"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
