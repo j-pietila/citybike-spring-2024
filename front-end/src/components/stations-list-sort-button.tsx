@@ -3,25 +3,17 @@ import { StationsContext } from "../contexts.tsx";
 
 export const StationsListSortButton = ({ buttonText, sortField }) => {
   const caretId = useId();
-  const [sort, setSort] = useState("DESCENDING");
-  const { stations, setStations } = useContext(StationsContext);
+  const [currentSort, setCurrentSort] = useState("descending");
+  const { setSort, setSortField } = useContext(StationsContext);
 
   const handleSort = () => {
     let caret = document.getElementById(caretId);
     caret.classList.toggle("rotate-180");
 
-    if (sort === "DESCENDING") {
-      setSort("ASCENDING");
-      var sortedStations = [...stations].sort((s1, s2) =>
-        s1[sortField] > s2[sortField] ? 1 : -1
-      );
-    } else {
-      setSort("DESCENDING");
-      var sortedStations = [...stations].sort((s1, s2) =>
-        s1[sortField] < s2[sortField] ? 1 : -1
-      );
-    }
-    setStations(sortedStations);
+    let sortBy = currentSort === "ascending" ? "descending" : "ascending";
+    setCurrentSort(sortBy);
+    setSort(sortBy);
+    setSortField(sortField);
   };
 
   return (
@@ -32,7 +24,7 @@ export const StationsListSortButton = ({ buttonText, sortField }) => {
       {buttonText}
       <svg
         id={caretId}
-        className="h-8 w-8 transition duration-200"
+        className="h-8 w-8 rotate-180 transition duration-200"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >

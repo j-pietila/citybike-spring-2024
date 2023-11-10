@@ -39,6 +39,7 @@ export const StationsList = () => {
               className={`station-list-subgrid station-list-subgrid-tw hover:bg-gray-400 hover:cursor-pointer ${
                 index % 2 === 0 ? "bg-slate-200" : "bg-slate-100"
               }`}
+              key={station.id}
               onClick={() => handleRowClick(station.id)}
             >
               <div>{station.station_name}</div>
