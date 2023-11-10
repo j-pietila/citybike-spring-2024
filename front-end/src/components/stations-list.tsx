@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { StationsContext } from "../contexts.tsx";
+import { StationsListSortButton } from "./stations-list-sort-button.tsx";
 import { getStationDetails } from "../services/station-service.tsx";
 
-export const StationsList = ({ stations }) => {
+export const StationsList = () => {
+  const { filteredStations } = useContext(StationsContext);
   const navigate = useNavigate();
 
   const handleRowClick = (id) => {
@@ -12,13 +16,19 @@ export const StationsList = ({ stations }) => {
 
   return (
     <div className="station-list">
-      <div className="station-list-row text-center font-semibold tracking-wide bg-slate-400 hover:bg-slate-400 hover:cursor-auto">
-        <div>Station name</div>
-        <div>Station address</div>
+      <div className="station-list-row items-center text-center font-semibold tracking-wide bg-slate-400 hover:bg-slate-400 hover:cursor-auto">
+        <StationsListSortButton
+          buttonText="Station name"
+          sortField="station_name"
+        />
+        <StationsListSortButton
+          buttonText="Station address"
+          sortField="station_address"
+        />
         <div>Latitude</div>
         <div>Longitude</div>
       </div>
-      {stations.map((station, index) => (
+      {filteredStations.map((station, index) => (
         <div
           key={station.id}
           className={`station-list-row ${
