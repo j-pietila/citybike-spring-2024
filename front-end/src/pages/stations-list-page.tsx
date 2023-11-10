@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { SearchBar } from "../components/search-bar.tsx";
-import { StationsList } from "../components/stations-list.tsx";
+import { StationsContext } from "../contexts.tsx";
+import { SearchBar, StationsList } from "../components";
 import { getStations } from "../services/station-service.tsx";
 
 const StationsListPage = () => {
@@ -40,12 +40,15 @@ const StationsListPage = () => {
         searchFilter={searchFilter}
         setSearchFilter={setSearchFilter}
       />
-      <StationsList
-        orgStations={stations}
-        setOrgStations={setStations}
-        stations={filteredStations}
-        setStations={setFilteredStations}
-      />
+      <StationsContext.Provider
+        value={{
+          stations,
+          setStations,
+          filteredStations,
+        }}
+      >
+        <StationsList />
+      </StationsContext.Provider>
     </>
   );
 };

@@ -1,13 +1,10 @@
-import { useId, useState } from "react";
+import { useContext, useId, useState } from "react";
+import { StationsContext } from "../contexts.tsx";
 
-export const SortButton = ({
-  buttonText,
-  sortField,
-  stations,
-  setStations,
-}) => {
+export const StationsListSortButton = ({ buttonText, sortField }) => {
   const caretId = useId();
   const [sort, setSort] = useState("DESCENDING");
+  const { stations, setStations } = useContext(StationsContext);
 
   const handleSort = () => {
     let caret = document.getElementById(caretId);
@@ -49,4 +46,4 @@ export const SortButton = ({
   );
 };
 
-export default SortButton;
+export default StationsListSortButton;
