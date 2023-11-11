@@ -2,10 +2,20 @@ import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { getStationDetails } from "../services/station-service.tsx";
 
+interface DetailStation {
+  id: number;
+  station_name: string;
+  station_address: string;
+  journeys_started: number;
+  journeys_ended: number;
+  journeys_started_avg_distance: number;
+  journeys_started_avg_duration: number;
+}
+
 const StationDetailsPage = () => {
-  const [station, setStation] = useState(null);
+  const [station, setStation] = useState<DetailStation | null>(null);
+  const { id } = useParams<Record<string, string | undefined>>();
   const location = useLocation();
-  const { id } = useParams();
 
   useEffect(() => {
     if (location.state && location.state.station) {

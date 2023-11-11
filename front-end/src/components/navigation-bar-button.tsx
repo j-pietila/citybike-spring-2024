@@ -1,16 +1,22 @@
 import { useId } from "react";
 
-export const NavigationBarButton = ({ dropdownId }) => {
+interface NavigationBarButtonProps {
+  dropdownId: string;
+}
+
+export const NavigationBarButton = ({
+  dropdownId,
+}: NavigationBarButtonProps) => {
   const caretId = useId();
 
   const handleClick = () => {
-    let dropdownContent = document.getElementById(dropdownId);
-    let caret = document.getElementById(caretId);
-    dropdownContent.classList.toggle("transition");
-    dropdownContent.classList.toggle("duration-500");
-    dropdownContent.classList.toggle("opacity-0");
-    dropdownContent.classList.toggle("h-0");
-    caret.classList.toggle("rotate-180");
+    const dropdownContent = document.getElementById(dropdownId);
+    const caret = document.getElementById(caretId);
+    dropdownContent?.classList.toggle("transition");
+    dropdownContent?.classList.toggle("duration-500");
+    dropdownContent?.classList.toggle("opacity-0");
+    dropdownContent?.classList.toggle("h-0");
+    caret?.classList.toggle("rotate-180");
   };
 
   return (
