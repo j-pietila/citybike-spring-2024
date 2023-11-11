@@ -4,11 +4,11 @@
 
 @layer components {
     .app-root {
-        @apply min-h-screen font-inter bg-slate-50
+        @apply h-screen font-inter bg-slate-50
     }
 
     .navigation-bar {
-        @apply flex justify-start items-center gap-x-16 pl-16 py-4 font-semibold text-xl tracking-wide border-b border-slate-950
+        @apply flex justify-start items-center gap-x-16 pl-16 py-4 h-[9vh] font-semibold text-xl tracking-wide border-b border-slate-950
     }
 
     .navigation-bar-dropdown-content {
@@ -16,15 +16,19 @@
       }
 
     .search-bar {
-        @apply flex flex-col items-center my-8
+        @apply flex flex-col items-center mt-8 mb-7
     }
 
     .station-details {
         @apply px-16 py-10
     }
 
+    .station-list-page {
+        @apply h-[91vh] px-40 pb-16 overflow-y-scroll
+    }
+
     .station-list-grid {
-        @apply mx-auto max-w-[85%] pb-10 grid grid-cols-4 gap-y-1.5
+        @apply grid grid-cols-4 gap-y-1.5
     }
 
     .station-list-subgrid {

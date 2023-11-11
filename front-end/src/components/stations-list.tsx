@@ -15,42 +15,40 @@ export const StationsList = () => {
   };
 
   return (
-    <>
-      <div className="station-list-grid">
-        <div className="station-list-subgrid station-list-subgrid-tw font-semibold tracking-wide bg-slate-400">
-          <StationsListSortButton
-            buttonText="Station name"
-            sortField="station_name"
-          />
-          <StationsListSortButton
-            buttonText="Station address"
-            sortField="station_address"
-          />
-          <div className="flex justify-center items-center hover:cursor-auto hover:bg-slate-400">
-            Latitude
-          </div>
-          <div className="flex justify-center items-center hover:cursor-auto hover:bg-slate-400">
-            Longitude
-          </div>
+    <div className="station-list-grid">
+      <div className="station-list-subgrid station-list-subgrid-tw sticky top-0 font-semibold tracking-wide bg-slate-400">
+        <StationsListSortButton
+          buttonText="Station name"
+          sortField="station_name"
+        />
+        <StationsListSortButton
+          buttonText="Station address"
+          sortField="station_address"
+        />
+        <div className="flex justify-center items-center hover:cursor-auto hover:bg-slate-400">
+          Latitude
         </div>
-        <>
-          {filteredStations.map((station, index) => (
-            <div
-              className={`station-list-subgrid station-list-subgrid-tw hover:bg-gray-400 hover:cursor-pointer ${
-                index % 2 === 0 ? "bg-slate-200" : "bg-slate-100"
-              }`}
-              key={station.id}
-              onClick={() => handleRowClick(station.id)}
-            >
-              <div>{station.station_name}</div>
-              <div>{station.station_address}</div>
-              <div>{station.latitude}</div>
-              <div>{station.longitude}</div>
-            </div>
-          ))}
-        </>
+        <div className="flex justify-center items-center hover:cursor-auto hover:bg-slate-400">
+          Longitude
+        </div>
       </div>
-    </>
+      <>
+        {filteredStations.map((station, index) => (
+          <div
+            className={`station-list-subgrid station-list-subgrid-tw hover:bg-gray-400 hover:cursor-pointer ${
+              index % 2 === 0 ? "bg-slate-200" : "bg-slate-100"
+            }`}
+            key={station.id}
+            onClick={() => handleRowClick(station.id)}
+          >
+            <div>{station.station_name}</div>
+            <div>{station.station_address}</div>
+            <div>{station.latitude}</div>
+            <div>{station.longitude}</div>
+          </div>
+        ))}
+      </>
+    </div>
   );
 };
 

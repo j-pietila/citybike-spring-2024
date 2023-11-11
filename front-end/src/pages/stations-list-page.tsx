@@ -48,7 +48,7 @@ const StationsListPage = () => {
   }
 
   return (
-    <>
+    <div className="station-list-page">
       <SearchBar
         searchFilter={searchFilter}
         setSearchFilter={setSearchFilter}
@@ -62,7 +62,7 @@ const StationsListPage = () => {
       >
         <StationsList />
       </StationsContext.Provider>
-    </>
+    </div>
   );
 };
 
