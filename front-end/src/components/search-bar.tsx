@@ -1,5 +1,10 @@
-export const SearchBar = ({ searchFilter, setSearchFilter }) => {
-  const handleSearchChange = (event) => {
+interface SearchBarProps {
+  searchFilter: string
+  setSearchFilter: React.Dispatch<React.SetStateAction<string>>
+}
+
+export const SearchBar = ({ searchFilter, setSearchFilter }: SearchBarProps) => {
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchFilter(event.target.value);
   };
 
@@ -17,7 +22,7 @@ export const SearchBar = ({ searchFilter, setSearchFilter }) => {
           className="py-1 border text-center border-slate-950"
           type="text"
           value={searchFilter}
-          maxLength="20"
+          maxLength={20}
           spellCheck="false"
           onChange={handleSearchChange}
         />

@@ -6,7 +6,7 @@ export const getStations = async () => {
   return stations;
 };
 
-export const getStationDetails = async (id) => {
+export const getStationDetails = async (id: string | undefined) => {
   const response = await axios.get(
     `http://citybike.localhost/api/v1/stations/${id}`
   );

@@ -1,16 +1,28 @@
 import { useContext, useId, useState } from "react";
-import { StationsContext } from "../contexts.tsx";
+import { StationsSortContext } from "../contexts.tsx";
+import { SortDirection, SortFields } from "../enums.tsx";
 
-export const StationsListSortButton = ({ buttonText, sortField }) => {
+interface StationsListSortButtonProps {
+  buttonText: string;
+  sortField: SortFields;
+}
+
+export const StationsListSortButton = ({
+  buttonText,
+  sortField,
+}: StationsListSortButtonProps) => {
   const caretId = useId();
-  const [currentSort, setCurrentSort] = useState("descending");
-  const { setSort, setSortField } = useContext(StationsContext);
+  const [currentSort, setCurrentSort] = useState(SortDirection.DESCENDING);
+  const { setSort, setSortField } = useContext(StationsSortContext);
 
   const handleSort = () => {
-    let caret = document.getElementById(caretId);
-    caret.classList.toggle("rotate-180");
+    const caret = document.getElementById(caretId);
+    caret?.classList.toggle("rotate-180");
 
-    let sortBy = currentSort === "ascending" ? "descending" : "ascending";
+    const sortBy =
+      currentSort === SortDirection.ASCENDING
+        ? SortDirection.DESCENDING
+        : SortDirection.ASCENDING;
     setCurrentSort(sortBy);
     setSort(sortBy);
     setSortField(sortField);
