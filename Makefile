@@ -41,7 +41,7 @@ down:
 db:
 	$(compose) up -d db
 
-# Backend testing
+# Back-end testing
 test:
 	$(compose) exec -T app bash -c 'DJANGO_SETTINGS_MODULE=citybike.settings \
 	&& DJANGO_DEBUG=false \
@@ -57,6 +57,16 @@ test-local: venv db
 		&& coverage run --source=$(TEST) manage.py test $(TEST) \
 		--settings=citybike.settings --keepdb \
 		&& coverage report
+
+# Front-end linting and testing
+node-lint:
+	cd front-end && yarn lint
+
+node-test:
+	cd front-end && yarn test
+
+node-test-coverage:
+	cd front-end && yarn coverage
 
 # Database
 psql:
