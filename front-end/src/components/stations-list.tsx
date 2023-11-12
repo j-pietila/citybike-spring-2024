@@ -16,8 +16,14 @@ export const StationsList = () => {
   };
 
   return (
-    <div className="station-list-grid">
-      <div className="station-list-subgrid station-list-subgrid-tw sticky top-0 font-semibold tracking-wide bg-slate-400">
+    <div
+      aria-label="station-list"
+      className="station-list-grid"
+    >
+      <div
+        aria-label="station-list-header"
+        className="station-list-subgrid station-list-subgrid-tw sticky top-0 font-semibold tracking-wide bg-slate-400"
+      >
         <StationsListSortButton
           buttonText="Station name"
           sortField={SortFields.STATION_NAME}
@@ -35,7 +41,7 @@ export const StationsList = () => {
       </div>
       <>
         {stations.map((station, index) => (
-          <div
+          <li
             className={`station-list-subgrid station-list-subgrid-tw hover:bg-gray-400 hover:cursor-pointer ${
               index % 2 === 0 ? "bg-slate-200" : "bg-slate-100"
             }`}
@@ -46,7 +52,7 @@ export const StationsList = () => {
             <div>{station.station_address}</div>
             <div>{station.latitude}</div>
             <div>{station.longitude}</div>
-          </div>
+          </li>
         ))}
       </>
     </div>

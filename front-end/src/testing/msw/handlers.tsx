@@ -40,7 +40,7 @@ const handlers = [
       },
     ]);
   }),
-  http.get("http://citybike.localhost/api/v1/stations", () => {
+  http.get("http://citybike.localhost/api/v1/stations/2", () => {
     return HttpResponse.json({
       id: 2,
       station_name: "Laivasillankatu",
