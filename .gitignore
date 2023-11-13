@@ -3,3 +3,4 @@ venv
 *.pyc
 .coverage
 .coverage.xml
+coverage-final.json
