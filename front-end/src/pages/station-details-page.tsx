@@ -32,7 +32,10 @@ const StationDetailsPage = () => {
   }
 
   return (
-    <div className="station-details">
+    <div
+      aria-label="station-details"
+      className="station-details"
+    >
       <p className="mb-1 font-semibold text-4xl">{station.station_name}</p>
       <p className="mb-8 text-3xl">{station.station_address}</p>
       <p className="mb-1 text-2xl font-semibold decoration-slate-600">

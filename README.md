@@ -66,4 +66,4 @@ To run tests on localhost with watch mode, run the following make command:
 - make node-test
 
 To run tests on localhost once with coverage, run the following make command:
-- make node-coverage
+- make node-test-coverage

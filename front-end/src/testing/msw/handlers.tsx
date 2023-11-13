@@ -40,9 +40,11 @@ const handlers = [
       },
     ]);
   }),
-  http.get("http://citybike.localhost/api/v1/stations/2", () => {
+  http.get("http://citybike.localhost/api/v1/stations/:id", ({ params }) => {
+    const { id } = params;
+
     return HttpResponse.json({
-      id: 2,
+      id: Number(id),
       station_name: "Laivasillankatu",
       station_address: "Laivasillankatu 14",
       journeys_started: 7052,
