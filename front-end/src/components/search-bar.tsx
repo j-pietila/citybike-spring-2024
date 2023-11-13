@@ -12,7 +12,10 @@ export const SearchBar = ({
   };
 
   return (
-    <div className="search-bar">
+    <div
+      aria-label="search-bar"
+      className="search-bar"
+    >
       <div className="relative">
         <svg
           className="absolute top-[22%] left-2 h-5 w-5"
