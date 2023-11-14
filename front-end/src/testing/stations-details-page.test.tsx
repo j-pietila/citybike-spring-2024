@@ -13,7 +13,7 @@ import {
 } from "vitest";
 
 interface MockLocation {
-  state: Object;
+  state: object;
 }
 
 const mockLocationValue: MockLocation = {

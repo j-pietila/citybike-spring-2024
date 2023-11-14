@@ -42,7 +42,7 @@ db:
 	$(compose) up -d db
 
 # Back-end testing
-test:
+test: db
 	$(compose) exec -T app bash -c 'DJANGO_SETTINGS_MODULE=citybike.settings \
 	&& DJANGO_DEBUG=false \
 	&& pip install coverage \
@@ -58,7 +58,7 @@ test-local: venv db
 		--settings=citybike.settings --keepdb \
 		&& coverage report
 
-# Front-end linting and testing
+# Front-end
 node-lint:
 	cd front-end && yarn lint
 
@@ -67,6 +67,12 @@ node-test:
 
 node-test-coverage:
 	cd front-end && yarn coverage
+
+rebuild-yarn:
+	cd front-end && yarn rebuild && yarn install
+
+rebuild-sdks:
+	cd front-end && yarn dlx @yarnpkg/sdks vscode
 
 # Database
 psql:

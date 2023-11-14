@@ -45,7 +45,6 @@ services:
     depends_on:
       - app
     environment:
-      - UPSTREAM
       - SERVER_NAME
       - ADMIN_SERVER_NAME
     volumes:
