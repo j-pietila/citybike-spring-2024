@@ -7,6 +7,9 @@ export default {
     extend: {
       fontFamily: {
         "inter": ["Inter", "sans-serif"]
+      },
+      screens: {
+        "md": "1000px"
       }
     },
   },
