@@ -1,7 +1,9 @@
 const StationsMapPage = () => {
   return (
-    <div>
-      <h1>Stations map page</h1>
+    <div className="h-[91vh]">
+      <p className="pt-12 text-center font-semibold text-lg">
+        Mapbox integration incoming
+      </p>
     </div>
   );
 };
