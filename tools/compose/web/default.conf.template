@@ -24,7 +24,10 @@ server {
     include proxy.conf;
 
     location / {
-        limit_req zone=perip burst=20 nodelay;
+        try_files $uri /index.html @proxy;
+    }
+
+    location @proxy {
         proxy_pass http://frontend;
     }
 
